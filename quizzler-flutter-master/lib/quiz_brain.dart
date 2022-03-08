@@ -1,6 +1,9 @@
 import 'question.dart';
 
+
  class QuizBrain{
+
+   int _questionNumber = 0;
   List <Question> _questionBank = [
     Question('Some cats are actually allergic to humans', true),
     Question('You can lead a cow down stairs but not up stairs.', false),
@@ -16,13 +19,29 @@ import 'question.dart';
     Question('Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.', true),
     Question('In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.', true),
   ];
-  String getQuestionText(int questionNumber){
-    return _questionBank[questionNumber].questionText;
+  String getQuestionText(){
+    return _questionBank[_questionNumber].questionText;
   }
-  bool getCorrectAnswer(int questionNumber){
-    return _questionBank[questionNumber].questionAnswer;
+  bool getCorrectAnswer(){
+    return _questionBank[_questionNumber].questionAnswer;
   }
-  int getQuestionCount(){
-    return _questionBank.length;
+  // int getQuestionCount(){
+  //   return _questionBank.length;
+  // }
+  nextQuestion(){
+    if (_questionNumber < _questionBank.length - 1){
+      _questionNumber ++;
+    }
   }
-}
+
+  bool isFinished(){
+    if(_questionNumber >= _questionBank.length - 1){
+      return true;
+    }
+    return false;
+    }
+
+    reset(){
+    _questionNumber = 0;
+    }
+  }
